@@ -239,6 +239,14 @@ endfunction
 " If compile_commands.json cannot be found, two empty strings will be
 " returned.
 function! ale#c#FindCompileCommands(buffer) abort
+    try
+        let l:json_file = ale#Var(a:buffer, 'c_compile_commands_file')
+        if filereadable(l:json_file)
+            return [fnamemodify(l:json_file, ':h'), l:json_file]
+        endif
+    catch /.*/
+    endtry
+
     " Look above the current source file to find compile_commands.json
     let l:json_file = ale#path#FindNearestFile(a:buffer, 'compile_commands.json')
 

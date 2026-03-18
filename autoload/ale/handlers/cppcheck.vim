@@ -35,11 +35,11 @@ function! ale#handlers#cppcheck#GetCompileCommandsOptions(buffer) abort
     " good, so include the file's directory instead. It's not quite as good as
     " using --project, but is at least equivalent to running cppcheck on this
     " file manually from the file's directory.
-    let l:modified = getbufvar(a:buffer, '&modified')
+    "let l:modified = getbufvar(a:buffer, '&modified')
 
-    if l:modified
-        return ''
-    endif
+    "if l:modified
+    "    return ''
+    "endif
 
     " Search upwards from the file for compile_commands.json.
     "

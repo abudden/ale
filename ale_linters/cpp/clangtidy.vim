@@ -37,9 +37,9 @@ function! ale_linters#cpp#clangtidy#GetCommand(buffer, output) abort
 
     return '%e'
     \   . (!empty(l:checks) ? ' -checks=' . ale#Escape(l:checks) : '')
-    \   . (!empty(l:extra_options) ? ' ' . ale#Escape(l:extra_options) : '')
-    \   . ' %s'
+    \   . (!empty(l:extra_options) ? ' ' . l:extra_options : '')
     \   . (!empty(l:build_dir) ? ' -p ' . ale#Escape(l:build_dir) : '')
+    \   . ' %s'
     \   . (!empty(l:options) ? ' -- ' . l:options : '')
 endfunction
 
